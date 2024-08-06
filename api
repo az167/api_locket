@@ -1,0 +1,15 @@
+// Script để log chi tiết các yêu cầu và phản hồi từ TestFlight
+$network.httpInspector = function(session) {
+  if (session.request.url.includes("testflight.apple.com")) {
+    if (session.response) {
+      console.log("Request URL: " + session.request.url);
+      console.log("Request Method: " + session.request.method);
+      console.log("Request Headers: " + JSON.stringify(session.request.headers));
+      console.log("Request Body: " + session.request.body);
+
+      console.log("Response Status: " + session.response.status);
+      console.log("Response Headers: " + JSON.stringify(session.response.headers));
+      console.log("Response Body: " + session.response.body);
+    }
+  }
+};
